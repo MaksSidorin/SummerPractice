@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
+
+    <View
+        android:id="@+id/line"
+        android:paddingTop="40dp"
+        android:layout_width="match_parent"
+        android:background="@color/grey"
+        android:layout_height="2dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/likeButton"
+        app:layout_constraintTop_toBottomOf="@+id/line"
+        android:src="@drawable/like"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        tools:ignore="MissingConstraints"
+       />
+
+
+    <TextView
+        android:id="@+id/likeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+        android:text="Текст"
+        android:textSize= "16dp"
+        android:paddingTop="15dp"
+        app:layout_constraintLeft_toRightOf="@+id/likeButton"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <ImageButton
+        android:id="@+id/dislikeButton"
+        android:src="@drawable/dislike"
+        app:layout_constraintTop_toBottomOf="@+id/line"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:ignore="MissingConstraints,RtlSymmetry"
+        />
+
+    <TextView
+        android:id="@+id/dislikeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+        android:text="Текст"
+        android:textSize= "16dp"
+        android:paddingTop="15dp"
+        app:layout_constraintLeft_toRightOf="@+id/dislikeButton"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <View
+        android:id="@+id/line2"
+        app:layout_constraintTop_toBottomOf="@+id/dislikeButton"
+        android:paddingTop="40dp"
+        android:layout_width="match_parent"
+        android:background="@color/grey"
+        android:layout_height="2dp"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
