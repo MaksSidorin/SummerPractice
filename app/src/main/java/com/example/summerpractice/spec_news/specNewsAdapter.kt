@@ -1,10 +1,16 @@
 package com.example.summerpractice.spec_news
+
+import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.summerpractice.R
+import android.media.session.MediaController;
+import java.security.AccessController.getContext
+
 
 class specNewsAdapter(private val specNews: ArrayList<SpecNewsType>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -24,6 +30,8 @@ class specNewsAdapter(private val specNews: ArrayList<SpecNewsType>) : RecyclerV
             SpecNewsType.ITALIC_TEXT_TYPE
         } else if (specNews.get(position) is TwoButtonsType) {
             SpecNewsType.TWO_BUTTON_TYPE
+        } else if (specNews.get(position) is VideoType) {
+            SpecNewsType.VIDEO_TYPE
         } else {
             -1
         }
@@ -93,7 +101,16 @@ class specNewsAdapter(private val specNews: ArrayList<SpecNewsType>) : RecyclerV
         }
     }
 
+    class VideoViewHolder : RecyclerView.ViewHolder {
+        val videoView: VideoView
+
+        constructor(view: View) : super(view) {
+            videoView = view.findViewById<VideoView>(R.id.video_content) as VideoView
+        }
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+
 
         when (viewType) {
 
@@ -131,6 +148,11 @@ class specNewsAdapter(private val specNews: ArrayList<SpecNewsType>) : RecyclerV
                 val itemView = LayoutInflater.from(parent.context)
                         .inflate(R.layout.two_buttons, parent, false)
                 return TwoButtonsViewHolder(itemView)
+            }
+            SpecNewsType.VIDEO_TYPE -> {
+                val itemView = LayoutInflater.from(parent.context)
+                        .inflate(R.layout.video_content, parent, false)
+                return VideoViewHolder(itemView)
             }
             else -> throw IllegalArgumentException("Unsupported type")
         }
@@ -177,6 +199,12 @@ class specNewsAdapter(private val specNews: ArrayList<SpecNewsType>) : RecyclerV
                         .setText((specNews.get(position) as TwoButtonsType).getMyLikeText())
                 (holder).dislikeTextView
                         .setText((specNews.get(position) as TwoButtonsType).getMyDislikeText())
+            }
+            is VideoViewHolder -> {
+                (holder).videoView
+                        .setVideoURI((specNews.get(position) as VideoType).getMyVideoUri())
+                (holder).videoView.requestFocus()
+                (holder).videoView.start()
             }
         }
     }

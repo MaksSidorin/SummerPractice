@@ -7,17 +7,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.media.session.MediaController
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.summerpractice.all_news_list.FragmentOne
 import com.example.summerpractice.R
+
 import kotlinx.android.synthetic.main.fragment_specific_news.*
 
 class Fragment_specific_news : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -42,6 +45,7 @@ class Fragment_specific_news : Fragment() {
            tags.add(ItalicTextType(resources.getString(R.string.italic_text)))
                       tags.add(TwoButtonsType(1, 2, resources.getString(R.string.like_text),
                               resources.getString(R.string.dislike_text)))
+        tags.add(VideoType(R.raw.factory))
 
         val adapter = specNewsAdapter(tags)
 
@@ -54,6 +58,10 @@ class Fragment_specific_news : Fragment() {
        val v = inflater.inflate(R.layout.fragment_specific_news, container, false)
 
         val back_bt2 = v.findViewById<ImageButton>(R.id.button_back2)
+        /*if(context != null) {
+            val mediaController = MediaController(requireContext())
+        }*/
+
 
         back_bt2.setOnClickListener(){
             val fragmentOne = FragmentOne()

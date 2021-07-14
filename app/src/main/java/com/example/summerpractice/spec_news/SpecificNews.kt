@@ -1,5 +1,14 @@
 package com.example.summerpractice.spec_news
 
+
+import android.content.Context
+import android.graphics.Point
+import android.net.Uri
+import android.view.WindowManager
+import com.example.summerpractice.BuildConfig
+import com.example.summerpractice.R
+
+
 class ImageType : SpecNewsType {
 
    private var specImage : Int // картинка
@@ -109,6 +118,24 @@ class TwoButtonsType : SpecNewsType {
     public fun getMyDislikeText(): String {
         return this.dislikeText
     }
+}
+
+class VideoType : SpecNewsType {
+    var PACKAGE_NAME: String? = null
+
+    private var myVideoURI: Int
+
+    constructor(videoContent: Int) {
+        this.myVideoURI = videoContent
+    }
+
+    public fun getMyVideoUri(): Uri{
+
+       val  PkgName = BuildConfig.APPLICATION_ID
+
+        return Uri.parse("android.resource://" +  PkgName +"/"+R.raw.factory)
+    }
 
 }
+
 

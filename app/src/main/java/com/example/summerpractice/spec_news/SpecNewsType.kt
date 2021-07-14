@@ -9,5 +9,6 @@ interface SpecNewsType {
         const val BULL_TEXT_TYPE = 4
         const val ITALIC_TEXT_TYPE = 5
         const val TWO_BUTTON_TYPE = 6
+        const val VIDEO_TYPE = 7
     }
 }

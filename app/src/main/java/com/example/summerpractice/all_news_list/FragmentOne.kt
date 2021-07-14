@@ -48,7 +48,6 @@ class FragmentOne : Fragment() {
                 Log.d("FragmentOne", "tag = " + tag)
                 val fragmentSpecificNews = Fragment_specific_news()
 
-
                 val transaction: FragmentTransaction = parentFragmentManager!!.beginTransaction()
                 transaction.replace(R.id.mainLayout, fragmentSpecificNews)
                 transaction.commit()
